@@ -1,0 +1,51 @@
+{% import "macros.html" as macros %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ config.title }}</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header class="section pb-0">
+    <div class="container">
+      <h1 class="title"><a href="/" class="has-text-black">John Buckley</a></h1>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="columns">
+        <div class="column is-2 is-hidden-mobile">
+          {% set projects = get_section(path="projects/_index.md") %}
+
+          <!-- TODO span layout if on mobile -->
+          <ul>
+            {% for proj in projects.pages %}
+            {{ macros::menu_item(title = proj.title, link = proj.path) }}
+            {% endfor %}
+            <li>&nbsp;</li>
+            {{ macros::menu_item(title = "About", link = "/about/") }}
+          </ul>
+        </div>
+      
+        <div class="column">
+          {% block content %} {% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer py-5">
+    <div class="container">
+      <div class="has-text-centered is-size-7">&copy; John Buckley 2021</div>
+    </div>
+  </footer>
+</body>
+
+</html>
