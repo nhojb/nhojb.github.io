@@ -4,29 +4,35 @@
 
 <div class="project">
 
+  {% if page.description or page.content %}
   <div class="content mb-6">
-    {# % if page.description % #}
+    {% if page.description %}
     <p class="subtitle"><strong>{{ page.description }}</strong></p>
-    {# % endif % #}
-    <p>{{ page.content | safe }}</p>
+    {% endif %}
+    {{ page.content | safe }}
   </div>
-
-  {% for asset in page.assets %}
-  {% set meta = get_image_metadata(path=asset) %}
-
-  {% if meta.width > meta.height %}
-  {% set orientation = "is-landscape" %}
-  {% else %}
-  {% set orientation = "is-portrait" %}
   {% endif %}
 
-  <div class="pb-6 is-flex is-justify-content-center">
-    <figure class="image {{ orientation }}">
-      <img src="/{{ asset | safe }}">
-      <figcaption>A Caption</figcaption>
-    </figure>
+  <div class="gallery is-flex is-flex-direction-column">
+
+    {% for asset in page.assets | sort %}
+    {% set meta = get_image_metadata(path=asset) %}
+
+    {% if meta.width > meta.height %}
+    {% set orientation = "is-landscape" %}
+    {% else %}
+    {% set orientation = "is-portrait" %}
+    {% endif %}
+
+    <div class="pb-6">
+      <figure class="image {{ orientation }}">
+        <img src="/{{ asset | safe }}">
+        <!--figcaption>A Caption</figcaption-->
+      </figure>
+    </div>
+    {% endfor %}
+
   </div>
-  {% endfor %}
 
 </div>
 
