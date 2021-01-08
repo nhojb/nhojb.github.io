@@ -1,10 +1,32 @@
 @charset "utf-8"
 
 $link: #000
+$footer-background-color: #fff
 
+$font-size-1: 3rem
+$size-1: $font-size-1
+$size-2: $size-1 - 0.5rem
+$size-3: $size-2 - 0.5rem
+$size-4: $size-3 - 0.5rem
+$size-5: $size-4 - 0.25rem
+$size-6: $size-5 - 0.35rem
+$size-7: $size-6 - 0.05rem
+
+// TODO: import only components which we require...
 @import "../bulma/bulma.sass"
 
-// TODO: We have to style plain markdown ourselves :-(
-// Better to use skeleton??
-h2
-  font-weight: bold
+.is-size-tiny
+  font-size: $size-small - 0.1rem
+
+.is-size-small
+  font-size: $size-small
+
+.is-size-normal
+  font-size: $size-normal
+
+.is-size-medium
+  font-size: $size-medium
+
+.is-size-large
+  font-size: $size-large
+

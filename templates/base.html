@@ -24,8 +24,8 @@
         <div class="column is-2 is-hidden-mobile">
           {% set projects = get_section(path="projects/_index.md") %}
 
-          <!-- TODO span layout if on mobile -->
-          <ul>
+          <!-- TODO span layout if on mobile? -->
+          <ul class="is-size-normal">
             {% for proj in projects.pages %}
             {{ macros::menu_item(title = proj.title, link = proj.path) }}
             {% endfor %}
@@ -43,7 +43,7 @@
 
   <footer class="footer py-5">
     <div class="container">
-      <div class="has-text-centered is-size-7">&copy; John Buckley 2021</div>
+      <div class="has-text-centered is-size-tiny">&copy; John Buckley 2021</div>
     </div>
   </footer>
 </body>
