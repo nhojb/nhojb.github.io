@@ -1,0 +1,7 @@
+{% macro menu_item(title, link) %}
+  {% if link == current_path %}
+    <li><a href={{ link | safe }} class='has-text-grey'>{{ title }}</a></li>
+  {% else %}
+    <li><a href={{ link | safe }}>{{ title }}</a></li>
+  {% endif %}
+{% endmacro menu_item %}

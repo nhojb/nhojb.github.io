@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{# build projects gallery #}
+{% set projects = get_section(path="projects/_index.md") %}
+
+<div class="gallery">
+
+  {% set count = 0 %}
+
+  {% for proj in projects.pages %}
+  {% set asset = proj.assets | first %}
+
+  {% if asset %}
+
+  {% if count % 3 == 0 %}
+    {% if count > 0 %}
+      </div>
+    {% endif %}
+    <div class="columns is-vcentered">
+  {% endif %}
+
+  {% set_global count = count + 1 %}
+
+  {% set meta = get_image_metadata(path=asset) %}
+
+  {% if meta.width > meta.height %}
+  {% set orientation = "is-landscape" %}
+  {% else %}
+  {% set orientation = "is-portrait" %}
+  {% endif %}
+
+  <div class="column p-4">
+    <figure class="image {{ orientation }}" onmouseover="toggleFigureCaption(this)" onmouseout="toggleFigureCaption(this)">
+      <a href="{{ proj.path }}">
+        <img src="{{ get_url(path=proj.assets | first | safe) }}"">
+        <figcaption class="is-size-small is-hidden-desktop">{{ proj.title }}</figcaption>
+        <figcaption class="is-size-small is-hidden-touch" style="visibility: hidden">{{ proj.title }}</figcaption>
+      </a>
+    </figure>
+  </div>
+
+  {% endif %}
+  {% endfor %}
+
+  {# Pad remaining columns if necessary #}
+  {% set remainder = count % 3 %}
+  {% for idx in range(end=remainder + 1) %}
+  <div class="column"></div>
+  {% endfor %}
+
+</div>
+
+<script type='text/javascript'>
+  function toggleFigureCaption(figure) {
+      var caption = figure.firstElementChild.lastElementChild;
+      if (caption.style.visibility == 'hidden') {
+          caption.style.visibility = 'visible';
+      } else {
+          caption.style.visibility = 'hidden';
+      }
+  }
+</script>
+
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- content class is required to style markdown html tags -->
+<div class="content">
+  {{ page.content | safe }}
+</div>
+
+{% endblock content %}

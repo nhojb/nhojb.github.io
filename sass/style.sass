@@ -1,0 +1,52 @@
+@charset "utf-8"
+
+// Colors
+$link: #000
+$footer-background-color: #fff
+
+// Fonts
+$size-1: 3rem
+$size-2: $size-1 - 0.5rem
+$size-3: $size-2 - 0.5rem
+$size-4: $size-3 - 0.5rem
+$size-5: $size-4 - 0.25rem
+$size-6: $size-5 - 0.35rem
+$size-7: $size-6 - 0.05rem
+
+// TODO: import only components which we require...
+@import "../bulma/bulma.sass"
+
+// Custom size classes
+.is-size-tiny
+  font-size: $size-small - 0.1rem
+
+.is-size-small
+  font-size: $size-small
+
+.is-size-normal
+  font-size: $size-normal
+
+.is-size-medium
+  font-size: $size-medium
+
+.is-size-large
+  font-size: $size-large
+
+// Gallery images
+.gallery
+  .image.is-portrait
+    img
+      max-height: 800px
+      // to left-align disable object-fit and add
+      // width: auto
+      object-fit: contain
+
+  .image.is-landscape
+    img
+      max-width: 1024px
+      // to left-align disable object-fit and add
+      // height: auto
+      object-fit: contain
+
+  figcaption
+    color: $grey-light
