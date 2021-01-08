@@ -1,0 +1,8 @@
+{# Adapted from https://stackoverflow.com/questions/41318987/hide-email-address-from-bots-keep-mailto #}
+{# TODO: Will onmouseover etc work on mobile?? #}
+{% set components = email | split(pat='@') %}
+<a href="#" d1="{{ components | first }}" d2="{{ components | last }}"
+   onmouseover="this.href = 'mailto:' + this.getAttribute('d1') + '@' + this.getAttribute('d2')"
+   onmouseout="this.href = '#'">
+   {{ label }}
+</a>
