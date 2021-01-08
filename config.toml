@@ -17,9 +17,3 @@ build_search_index = false
 
 [extra]
 # Put all your custom variables here
-toc = [
-           {title = "Pylons", link = "/projects/pylons/"},
-           {title = "Robots", link = "/projects/robots/"},
-           {title = "==space==", link = ""},    
-           {title = "About", link = "/about/"},  
-]
