@@ -1,22 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!--h1 class="title">{{ page.title }}</h1-->
-<div class="content mb-6">
-  {# % if page.description % #}
-  <p class="subtitle"><strong>{{ page.description }}</strong></p>
-  {# % endif % #}
-  <p>{{ page.content | safe }}</p>
+
+<div class="project">
+
+  <div class="content mb-6">
+    {# % if page.description % #}
+    <p class="subtitle"><strong>{{ page.description }}</strong></p>
+    {# % endif % #}
+    <p>{{ page.content | safe }}</p>
+  </div>
+
+  {% for asset in page.assets %}
+  {% set meta = get_image_metadata(path=asset) %}
+
+  {% if meta.width > meta.height %}
+  {% set orientation = "is-landscape" %}
+  {% else %}
+  {% set orientation = "is-portrait" %}
+  {% endif %}
+
+  <div class="pb-6 is-flex is-justify-content-center">
+    <figure class="image {{ orientation }}">
+      <img src="/{{ asset | safe }}">
+      <figcaption>A Caption</figcaption>
+    </figure>
+  </div>
+  {% endfor %}
+
 </div>
 
-{% for asset in page.assets %}
-<div class="pb-6 is-flex is-justify-content-center">
-  <figure>
-    <img src="/{{ asset }}">
-    <!--figcaption>A Caption</figcaption-->
-  </figure>
-</div>
-{% endfor %}
-
-<!--pre>{{ __tera_context }}</pre-->
 {% endblock content %}

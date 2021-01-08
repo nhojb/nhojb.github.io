@@ -1,10 +1,11 @@
 @charset "utf-8"
 
+// Colors
 $link: #000
 $footer-background-color: #fff
 
-$font-size-1: 3rem
-$size-1: $font-size-1
+// Fonts
+$size-1: 3rem
 $size-2: $size-1 - 0.5rem
 $size-3: $size-2 - 0.5rem
 $size-4: $size-3 - 0.5rem
@@ -15,6 +16,7 @@ $size-7: $size-6 - 0.05rem
 // TODO: import only components which we require...
 @import "../bulma/bulma.sass"
 
+// Custom size classes
 .is-size-tiny
   font-size: $size-small - 0.1rem
 
@@ -29,4 +31,25 @@ $size-7: $size-6 - 0.05rem
 
 .is-size-large
   font-size: $size-large
+
+// Project images
+.project
+  .image.is-portrait
+    width: auto
+    height: 800px
+
+    // Ensure img sizes to fit parent height
+    img
+      width: auto
+      height: 100%
+
+.project
+  .image.is-landscape
+    width: 1024px
+    height: auto
+
+    // Ensure img sizes to fit parent width
+    img
+      width: 100%
+      height: auto
 
