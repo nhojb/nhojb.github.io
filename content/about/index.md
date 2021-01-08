@@ -4,25 +4,24 @@ date = 2021-01-07
 template = "about.html"
 +++
 
-## About
-
 John Buckley is a photographer based in near Edinburgh, Scotland.
 
-Qualified Licentiate of the British Institute of Professional Photographers.<br/>
+A qualified Licentiate of the British Institute of Professional Photographers.
+
 Studied BA Professional Photography at Edinburgh College, 2015-16.<br/>
 Studied HND Professional Photography at West Lothian College and Edinburgh College 2013-2015.
 
-Want to hire me? Please get in touch {{ mailto(email="johnbuckleyphotography@gmail.com", label="here") }}
+You can get in touch via email {{ mailto(email="johnbuckleyphotography@gmail.com", label="here") }}
 
-## Awards
+### Awards
 
-2016 : AOP Student Awards - Finalist in 'Places'
+2016 : AOP Student Awards - Finalist in “Places”
 
 2015 : AOP Student Awards - Finalist in two categories.
 
-2015 : BIPP Student Awards - Merits for Connections and Surprise.
+2015 : BIPP Student Awards - Merits for “Connections” and “Surprise”.
 
-## Exhibitions
+### Exhibitions
 
 2016 : Free Range - Edinburgh College BA Show. The Old Truman Brewery, London. June 30th - July 4th.
 
