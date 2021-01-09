@@ -4,7 +4,8 @@
 $link: #000
 $footer-background-color: #fff
 
-// Fonts
+// Fonts - up to size-5 uses standard sizes.
+// size-6 and size-7 are customised.
 $size-1: 3rem
 $size-2: $size-1 - 0.5rem
 $size-3: $size-2 - 0.5rem
@@ -13,8 +14,24 @@ $size-5: $size-4 - 0.25rem
 $size-6: $size-5 - 0.35rem
 $size-7: $size-6 - 0.05rem
 
-// TODO: import only components which we require...
-@import "../bulma/bulma.sass"
+// Bulma
+@import "../bulma/sass/utilities/_all"
+@import "../bulma/sass/base/_all"
+@import "../bulma/sass/grid/_all"
+@import "../bulma/sass/helpers/_all"
+@import "../bulma/sass/layout/_all"
+
+@import "../bulma/sass/components/level.sass"
+
+// Note: elements/button.sass is quite large, so we import only what we require
+@import "../bulma/sass/elements/container.sass"
+@import "../bulma/sass/elements/content.sass"
+@import "../bulma/sass/elements/image.sass"
+@import "../bulma/sass/elements/title.sass"
+@import "../bulma/sass/elements/other.sass"
+
+// dev only
+//@import "../bulma/bulma.sass"
 
 // Custom size classes
 .is-size-tiny
