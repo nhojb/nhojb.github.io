@@ -23,16 +23,8 @@
 
   {% set_global count = count + 1 %}
 
-  {% set meta = get_image_metadata(path=asset) %}
-
-  {% if meta.width > meta.height %}
-  {% set orientation = "is-landscape" %}
-  {% else %}
-  {% set orientation = "is-portrait" %}
-  {% endif %}
-
   <div class="column p-4">
-    <figure class="image {{ orientation }}" onmouseover="toggleFigureCaption(this)" onmouseout="toggleFigureCaption(this)">
+    <figure class="image is-square cover" onmouseover="toggleFigureCaption(this)" onmouseout="toggleFigureCaption(this)">
       <a href="{{ proj.path }}">
         <img src="{{ get_url(path=proj.assets | first | safe) }}"">
         <figcaption class="is-size-small is-hidden-desktop">{{ proj.title }}</figcaption>
@@ -46,7 +38,7 @@
 
   {# Pad remaining columns if necessary #}
   {% set remainder = count % 3 %}
-  {% for idx in range(end=remainder + 1) %}
+  {% for idx in range(start=remainder, end=remainder + 1) %}
   <div class="column"></div>
   {% endfor %}
 
