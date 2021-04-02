@@ -4,9 +4,9 @@ date = 2021-01-07
 template = "about.html"
 +++
 
-John Buckley is a photographer based in near Edinburgh, Scotland.
+**John Buckley** is a photographer based in near Edinburgh, Scotland.
 
-A qualified Licentiate of the British Institute of Professional Photographers.
+A qualified Licentiate of the [BIPP](https://www.bipp.com/).
 
 Studied BA Professional Photography at Edinburgh College, 2015-16.<br/>
 Studied HND Professional Photography at West Lothian College and Edinburgh College 2013-2015.
