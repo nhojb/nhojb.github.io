@@ -8,13 +8,14 @@
 <div class="gallery">
 
   {% set count = 0 %}
+  {% set max_cols = 3 %}
 
   {% for proj in projects.pages %}
   {% set asset = proj.assets | first %}
 
   {% if asset %}
 
-  {% if count % 3 == 0 %}
+  {% if count % max_cols == 0 %}
     {% if count > 0 %}
       </div>
     {% endif %}
@@ -24,29 +25,29 @@
   {% set_global count = count + 1 %}
 
   <div class="column p-4">
-    <figure class="image is-square cover" onmouseover="toggleFigureCaption(this)" onmouseout="toggleFigureCaption(this)">
-      <a href="{{ proj.path }}">
-        <img src="{{ get_url(path=proj.assets | first | safe) }}"">
-        <figcaption class="is-size-small is-hidden-desktop">{{ proj.title }}</figcaption>
-        <figcaption class="is-size-small is-hidden-touch" style="visibility: hidden">{{ proj.title }}</figcaption>
-      </a>
-    </figure>
+    <a href="{{ proj.path }}">
+      <figure class="image cover is-square" onmouseover="toggleFigCaption(this)" onmouseout="toggleFigCaption(this)">
+        <img class="radius-normal" src="{{ get_url(path=proj.assets | first | safe) }}">
+      </figure>
+      <figcaption class="is-size-small is-hidden-touch" style="visibility: hidden">{{ proj.title }}</figcaption>
+      <figcaption class="is-size-small is-hidden-desktop">{{ proj.title }}</figcaption>
+    </a>
   </div>
 
   {% endif %}
   {% endfor %}
 
-  {# Pad remaining columns if necessary #}
-  {% set remainder = count % 3 %}
-  {% for idx in range(start=remainder, end=remainder + 1) %}
-  <div class="column"></div>
+  {# Pad remaining columns #}
+  {% set remainder = max_cols - count % max_cols %}
+  {% for idx in range(end=remainder) %}
+    <div class="column"></div>
   {% endfor %}
 
 </div>
 
 <script type='text/javascript'>
-  function toggleFigureCaption(figure) {
-      var caption = figure.firstElementChild.lastElementChild;
+  function toggleFigCaption(figure) {
+      var caption = figure.nextElementSibling;
       if (caption.style.visibility == 'hidden') {
           caption.style.visibility = 'visible';
       } else {
