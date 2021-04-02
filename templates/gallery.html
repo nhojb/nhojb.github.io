@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="gallery-page">
+
+  {% if page.description or page.content %}
+  <div class="content mb-6">
+    {% if page.description %}
+    <p class="subtitle"><strong>{{ page.description }}</strong></p>
+    {% endif %}
+    {{ page.content | safe }}
+  </div>
+  {% endif %}
+
+  <div class="gallery">
+
+    {% set count = 0 %}
+    {% set max_cols = 3 %}
+
+    {% for asset in page.assets | sort %}
+
+    {% if asset %}
+
+    {% if count % max_cols == 0 %}
+      {% if count > 0 %}
+        </div>
+      {% endif %}
+      <div class="columns is-vcentered">
+    {% endif %}
+
+    {% set_global count = count + 1 %}
+
+    <div class="column p-6">
+      <figure class="image is-square cover">
+        <img class="radius-normal" src="/{{ asset | safe }}">
+      </figure>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+
+    {# Pad remaining columns if necessary #}
+    {% set remainder = max_cols - count % max_cols %}
+    {% for idx in range(end=remainder) %}
+      <div class="column"></div>
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}

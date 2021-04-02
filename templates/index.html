@@ -24,7 +24,7 @@
 
   {% set_global count = count + 1 %}
 
-  <div class="column p-4">
+  <div class="column p-5">
     <a href="{{ proj.path }}">
       <figure class="image cover is-square" onmouseover="toggleFigCaption(this)" onmouseout="toggleFigCaption(this)">
         <img class="radius-normal" src="{{ get_url(path=proj.assets | first | safe) }}">
