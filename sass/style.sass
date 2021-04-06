@@ -3,6 +3,7 @@
 // Colors
 $link: #000
 $footer-background-color: #fff
+$modal-background-background-color: hsl(0, 0, 98%)
 
 // Fonts - up to size-5 uses standard sizes.
 // size-6 and size-7 are customised.
@@ -14,6 +15,8 @@ $size-5: $size-4 - 0.25rem
 $size-6: $size-5 - 0.35rem
 $size-7: $size-6 - 0.05rem
 
+$lightbox-transition-duration: 0.3s
+
 // Bulma
 @import "../bulma/sass/utilities/_all"
 @import "../bulma/sass/base/_all"
@@ -22,6 +25,7 @@ $size-7: $size-6 - 0.05rem
 @import "../bulma/sass/layout/_all"
 
 @import "../bulma/sass/components/level.sass"
+@import "../bulma/sass/components/modal.sass"
 
 // Note: elements/button.sass is quite large, so we import only what we require
 @import "../bulma/sass/elements/container.sass"
@@ -60,8 +64,13 @@ $size-7: $size-6 - 0.05rem
 
 // Gallery images
 .gallery
+  .column
+    +tablet
+      padding: map-get($spacing-values, "5")
+
   .image.cover img
     object-fit: cover
+    cursor: pointer
 
   .image.is-portrait
     img
@@ -80,3 +89,45 @@ $size-7: $size-6 - 0.05rem
   figcaption
     color: $grey
     margin-top: 0.2rem
+
+// Lightbox
+.lightbox
+  img
+    object-fit: contain
+
+  .modal-content
+    width: 100%
+
+  .modal-close
+    &::before,
+    &::after
+      background-color: $grey-light
+
+    &:hover
+      background-color: $grey-lightest
+
+  .button-prev, .button-next
+    color: $grey-lighter
+    cursor: pointer
+
+    &:hover
+      color: $grey-light
+
+.lightbox.modal
+  // Use visibility: hidden instead of display: none to permit use of transition.
+  // See https://www.impressivewebs.com/animate-display-block-none/
+  display: flex
+  visibility: hidden
+  opacity: 0
+
+  &.is-active
+    // Transition-in
+    opacity: 1
+    visibility: visible
+    transition: opacity $lightbox-transition-duration
+
+  &.is-inactive
+    visibility: hidden
+    opacity: 0
+    transition: visibility 0s $lightbox-transition-duration, opacity $lightbox-transition-duration
+
