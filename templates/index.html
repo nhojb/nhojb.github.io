@@ -16,15 +16,12 @@
   {% if asset %}
 
   {% if count % max_cols == 0 %}
-    {% if count > 0 %}
-      </div>
-    {% endif %}
-    <div class="columns is-vcentered">
+    <div class="columns is-vcentered is-mobile">
   {% endif %}
 
   {% set_global count = count + 1 %}
 
-  <div class="column p-5">
+  <div class="column">
     <a href="{{ proj.path }}">
       <figure class="image cover is-square" onmouseover="toggleFigCaption(this)" onmouseout="toggleFigCaption(this)">
         <img class="radius-normal" src="{{ get_url(path=proj.assets | first | safe) }}">
@@ -34,18 +31,25 @@
     </a>
   </div>
 
+  {% if count % max_cols == 0 %}
+  </div> <!-- columns -->
+  {% endif %}
+
   {% endif %}
   {% endfor %}
 
   {# Pad remaining columns #}
   {% set remainder = max_cols - count % max_cols %}
-  {% for idx in range(end=remainder) %}
-    <div class="column"></div>
-  {% endfor %}
+  {% if remainder > 0 %}
+    {% for idx in range(end=remainder) %}
+      <div class="column"></div>
+    {% endfor %}
+    </div> <!-- columns -->
+  {% endif %}
 
-</div>
+</div> <!-- gallery -->
 
-<script type='text/javascript'>
+<script>
   function toggleFigCaption(figure) {
       var caption = figure.nextElementSibling;
       if (caption.style.visibility == 'hidden') {
