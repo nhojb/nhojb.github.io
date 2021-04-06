@@ -30,7 +30,7 @@
 
     <div class="column">
       <figure class="image is-square cover">
-        <img class="radius-normal" src="/{{ asset | safe }}">
+        <img class="radius-normal" src="/{{ asset | safe }}" alt="{{ asset | split(pat='/') | last }}">
       </figure>
     </div>
 

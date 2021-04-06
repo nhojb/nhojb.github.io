@@ -24,7 +24,8 @@
   <div class="column">
     <a href="{{ proj.path }}">
       <figure class="image cover is-square" onmouseover="toggleFigCaption(this)" onmouseout="toggleFigCaption(this)">
-        <img class="radius-normal" src="{{ get_url(path=proj.assets | first | safe) }}">
+        {% set asset = proj.assets | first | safe %}
+        <img class="radius-normal" src="{{ get_url(path=asset) }}" alt="{{ asset | split(pat='/') | last }}">
       </figure>
       <figcaption class="is-size-small is-hidden-touch" style="visibility: hidden">{{ proj.title }}</figcaption>
       <figcaption class="is-size-small is-hidden-desktop">{{ proj.title }}</figcaption>
