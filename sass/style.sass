@@ -87,8 +87,16 @@ $lightbox-transition-duration: 0.3s
       object-fit: contain
 
   figcaption
-    color: $grey
+    color: $grey-light
     margin-top: 0.2rem
+
+  &.index
+    +desktop
+      figcaption
+        visibility: hidden
+
+        &.is-hovered
+          visibility: visible
 
 // Lightbox
 .lightbox

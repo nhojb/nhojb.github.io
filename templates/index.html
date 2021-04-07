@@ -5,7 +5,7 @@
 {# build projects gallery #}
 {% set projects = get_section(path="projects/_index.md") %}
 
-<div class="gallery">
+<div class="gallery index">
 
   {% set count = 0 %}
   {% set max_cols = 3 %}
@@ -23,12 +23,11 @@
 
   <div class="column">
     <a href="{{ proj.path }}">
-      <figure class="image cover is-square" onmouseover="toggleFigCaption(this)" onmouseout="toggleFigCaption(this)">
+      <figure class="image cover is-square" onmouseover="showFigCaption(this)" onmouseout="hideFigCaption(this)">
         {% set asset = proj.assets | first | safe %}
         <img class="radius-normal" src="{{ get_url(path=asset) }}" alt="{{ asset | split(pat='/') | last }}">
       </figure>
-      <figcaption class="is-size-small is-hidden-touch" style="visibility: hidden">{{ proj.title }}</figcaption>
-      <figcaption class="is-size-small is-hidden-desktop">{{ proj.title }}</figcaption>
+      <figcaption class="is-size-small">{{ proj.title }}</figcaption>
     </a>
   </div>
 
@@ -51,13 +50,12 @@
 </div> <!-- gallery -->
 
 <script>
-  function toggleFigCaption(figure) {
-      var caption = figure.nextElementSibling;
-      if (caption.style.visibility == 'hidden') {
-          caption.style.visibility = 'visible';
-      } else {
-          caption.style.visibility = 'hidden';
-      }
+  function showFigCaption(figure) {
+      figure.nextElementSibling.classList.add('is-hovered');
+  }
+
+  function hideFigCaption(figure) {
+      figure.nextElementSibling.classList.remove('is-hovered');
   }
 </script>
 
