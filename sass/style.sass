@@ -70,7 +70,6 @@ $lightbox-transition-duration: 0.3s
 
   .image.cover img
     object-fit: cover
-    cursor: pointer
 
   .image.is-portrait
     img
@@ -100,24 +99,26 @@ $lightbox-transition-duration: 0.3s
 
 // Lightbox
 .lightbox
-  img
+  &:focus
+    outline: none
+
+  .image img
     object-fit: contain
+    max-height: 90vh
 
   .modal-content
     width: 100%
+    overflow: hidden
 
   .modal-close
     &::before,
     &::after
       background-color: $grey-light
-
     &:hover
       background-color: $grey-lightest
 
   .button-prev, .button-next
     color: $grey-lighter
-    cursor: pointer
-
     &:hover
       color: $grey-light
 
@@ -139,3 +140,9 @@ $lightbox-transition-duration: 0.3s
     opacity: 0
     transition: visibility 0s $lightbox-transition-duration, opacity $lightbox-transition-duration
 
+body.lightbox-open
+  // block scroll for mobile;
+  // causes underlying page to jump to top;
+  // prevents scrolling on all screens
+  overflow: hidden
+  position: fixed

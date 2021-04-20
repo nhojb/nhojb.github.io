@@ -65,6 +65,13 @@ class Lightbox {
         this.lightbox.classList.add('is-active');
         this.lightbox.classList.remove('is-inactive');
         this.lightbox.focus();
+
+        this.activateTimeout = setTimeout(() => {
+            // Prevent scrolling while lightbox is active.
+            // See https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
+            document.body.style.top = `-${window.scrollY}px`;
+            document.body.classList.add('lightbox-open')
+        }, 1000);
     }
 
     deactivateLightbox() {
@@ -74,6 +81,18 @@ class Lightbox {
 
         this.lightbox.classList.add('is-inactive');
         this.lightbox.classList.remove('is-active');
+
+        document.body.classList.remove('lightbox-open')
+
+        // Restore body scroll position
+        const scrollY = document.body.style.top;
+        document.body.style.top = '';
+        if (scrollY) {
+            window.scrollTo(0, parseInt(scrollY) * -1);
+        }
+
+        clearTimeout(this.activateTimeout);
+        this.activateTimeout = 0;
     }
 
     addEventHandlers(lightbox) {

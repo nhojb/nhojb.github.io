@@ -4,15 +4,15 @@
     <div class="modal-background"></div>
     <div class="modal-content">
       <div class="columns is-vcentered is-mobile">
-        <div class="column is-1">
+        <div class="column is-1 is-hidden-mobile">
           <div class="button-prev is-size-3 is-unselectable has-text-centered" aria-label="previous">&#8592;</div>
         </div>
         <div class="column">
-          <p class="image is-3by2">
+          <div class="image">
             <img src="" alt=""/>
-          </p>
+          </div>
         </div>
-        <div class="column is-1">
+        <div class="column is-1 is-hidden-mobile">
           <div class="button-next is-size-3 is-unselectable has-text-centered" aria-label="next">&#8594;</div>
         </div>
       </div>
@@ -27,7 +27,6 @@
         let gallery = document.querySelector(".gallery");
         let lightbox = new Lightbox(gallery);
     });
-    
   </script>
 
 {% endblock lightbox %}
