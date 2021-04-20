@@ -25,7 +25,7 @@
     <a href="{{ proj.path }}">
       <figure class="image cover is-square" onmouseover="showFigCaption(this)" onmouseout="hideFigCaption(this)">
         {% set asset = proj.assets | first | safe %}
-        <img class="radius-normal" src="{{ get_url(path=asset) }}" alt="{{ asset | split(pat='/') | last }}">
+        <img class="radius-normal" src="/{{ asset | safe }}" alt="{{ asset | split(pat='/') | last }}">
       </figure>
       <figcaption class="is-size-small">{{ proj.title }}</figcaption>
     </a>
