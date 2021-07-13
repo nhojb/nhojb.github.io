@@ -32,6 +32,12 @@
             
             
   
+    <li><a href=/projects/winter-2021/>Winter 2021</a></li>
+  
+
+            
+            
+  
     <li><a href=/projects/connections/>Connections</a></li>
   
 
@@ -45,12 +51,6 @@
             
   
     <li><a href=/projects/pylons/ class='has-text-grey'>Pylons</a></li>
-  
-
-            
-            
-  
-    <li><a href=/projects/telegraph/>Telegraph</a></li>
   
 
             
@@ -95,7 +95,7 @@
 
     <div class="pb-6">
       <figure class="image is-landscape">
-        <img src="/projects/pylons/Pylons-1.jpg">
+        <img src="/projects/pylons/Pylons-1.jpg" alt="Pylons-1.jpg">
         <!--figcaption>A Caption</figcaption-->
       </figure>
     </div>
@@ -108,7 +108,7 @@
 
     <div class="pb-6">
       <figure class="image is-landscape">
-        <img src="/projects/pylons/Pylons-2.jpg">
+        <img src="/projects/pylons/Pylons-2.jpg" alt="Pylons-2.jpg">
         <!--figcaption>A Caption</figcaption-->
       </figure>
     </div>
@@ -121,15 +121,49 @@
 
     <div class="pb-6">
       <figure class="image is-landscape">
-        <img src="/projects/pylons/Pylons-3.jpg">
+        <img src="/projects/pylons/Pylons-3.jpg" alt="Pylons-3.jpg">
         <!--figcaption>A Caption</figcaption-->
       </figure>
     </div>
     
 
-  </div>
+  </div> <!-- gallery -->
 
 </div>
+
+
+
+  <div class="lightbox modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <div class="columns is-vcentered is-mobile is-variable is-1-touch mx-1">
+        <div class="column is-narrow">
+          <div class="button-prev is-size-3-touch is-size-1-desktop is-unselectable has-text-centered has-text-weight-light" aria-label="previous">&lsaquo;</div>
+        </div>
+        <div class="column">
+          <div class="image">
+            <img src="" alt=""/>
+          </div>
+        </div>
+        <div class="column is-narrow">
+          <div class="button-next is-size-3-touch is-size-1-desktop is-unselectable has-text-centered has-text-weight-light" aria-label="next">&rsaquo;</div>
+        </div>
+      </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <script src="/js/lightbox.js"></script>
+
+  <script>
+    window.addEventListener('load', e => {
+        let gallery = document.querySelector(".gallery");
+        let lightbox = new Lightbox(gallery);
+    });
+  </script>
+
+
+
 
 
         </div>
